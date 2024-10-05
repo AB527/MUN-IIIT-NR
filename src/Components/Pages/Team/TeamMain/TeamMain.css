@@ -20,10 +20,10 @@
     justify-content: center;
     flex-direction: column;
     width: 100%;
-    border: 2px solid transparent; /* Adjust thickness as needed */
+    /* border: 2px solid transparent;
     border-image: linear-gradient(90deg, rgba(41, 0, 64, 0) 0%, #FFFFFF 45.4%, rgba(41, 0, 64, 0) 100%);
-    border-image-slice: 1;
-    margin-bottom: 15vh;
+    border-image-slice: 1; */
+    margin-bottom: 7vh;
 }
 
 .team-image-mun{
@@ -37,6 +37,13 @@
     font-family: Mont;
     font-weight: 600;
     margin: auto;
+    margin-bottom: 7vh;
+    padding: 10px 0;
+    width: 75%;
+    text-align: center;
+    border: 2px solid transparent; /* Adjust thickness as needed */
+    border-image: linear-gradient(90deg, rgba(41, 0, 64, 0) 0%, #FFFFFF 45.4%, rgba(41, 0, 64, 0) 100%);
+    border-image-slice: 1;
 }
 
 .team{
@@ -52,6 +59,9 @@
 @media (max-width:630px) {
     .team-heading{
         font-size: 30px;
+    }
+    .team-heading{
+        width: 95%;
     }
 }
 

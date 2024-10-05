@@ -12,6 +12,7 @@ import 'aos/dist/aos.css';
 import { NeatGradient } from "@firecms/neat";
 import './HomePage.css'
 import Load from "../../Load_Page/Load.jsx";
+import fetchAPI from '../../../Utilities/NetworkUtility'
 
 AOS.init({ once: true }); // Initialize AOS
 
@@ -19,6 +20,7 @@ export default function App() {
     const [bgColor, setBgColor] = useState("my-canvas-class"); // Default class name
     const canvasRef = useRef(null);
     const gradientRef = useRef(null);
+    const [data, setData] = React.useState({});
 
     useEffect(() => {
         if (!canvasRef.current) return;
@@ -26,42 +28,42 @@ export default function App() {
         gradientRef.current = new NeatGradient({
             ref: canvasRef.current,
             colors: [
-              {
-                  color: "#3E0064",
-                  enabled: true
-              },
-              {
-                  color: "#230137",
-                  enabled: true
-              },
-              {
-                  color: "#430164",
-                  enabled: true
-              },
-              {
-                  color: "#29013F",
-                  enabled: true
-              },
-              {
-                  color: "#5C028C",
-                  enabled: true
-              }
-          ],
-          speed: 8,
-          horizontalPressure: 2,
-          verticalPressure: 5,
-          waveFrequencyX: 2,
-          waveFrequencyY: 4,
-          waveAmplitude: 3,
-          shadows: 7,
-          highlights: 10,
-          colorBrightness: 1,
-          colorSaturation: 1,
-          wireframe: false,
-          colorBlending: 7,
-          backgroundColor: "#9500E6",
-          backgroundAlpha: 1,
-          resolution: 1
+                {
+                    color: "#3E0064",
+                    enabled: true
+                },
+                {
+                    color: "#230137",
+                    enabled: true
+                },
+                {
+                    color: "#430164",
+                    enabled: true
+                },
+                {
+                    color: "#29013F",
+                    enabled: true
+                },
+                {
+                    color: "#5C028C",
+                    enabled: true
+                }
+            ],
+            speed: 8,
+            horizontalPressure: 2,
+            verticalPressure: 5,
+            waveFrequencyX: 2,
+            waveFrequencyY: 4,
+            waveAmplitude: 3,
+            shadows: 7,
+            highlights: 10,
+            colorBrightness: 1,
+            colorSaturation: 1,
+            wireframe: false,
+            colorBlending: 7,
+            backgroundColor: "#9500E6",
+            backgroundAlpha: 1,
+            resolution: 1
         });
 
         return () => {
@@ -69,45 +71,36 @@ export default function App() {
         };
     }, [canvasRef.current]);
 
-    let [loading,setLoading] = React.useState(true);
-    React.useEffect(()=>{
-        const timer2 = setTimeout(()=>{
+    let [loading, setLoading] = React.useState(true);
+    React.useEffect(() => {
+        const timer2 = setTimeout(() => {
             setLoading(false);
-        },6000)
+        }, 6000)
         return () => clearTimeout(timer2);
-    },[loading]);
+    }, [loading]);
 
-    React.useState(()=>{
+    React.useState(() => {
         document.body.style.overflow = 'hidden';
-        const timer = setTimeout(()=>{
+        fetchAPI("get-home", data => {
+            setData(data)
+        })
+        const timer = setTimeout(() => {
             document.body.style.overflow = 'visible';
-        },5000)
+        }, 5000)
         return () => clearTimeout(timer);
-    },[])
+    }, [])
 
     return (
         <div style={{ position: "relative", height: "100vh" }}>
-            {/* <canvas
-                className={bgColor}
-                style={{
-                    position: "fixed", // Keep the canvas fixed
-                    top: 0,
-                    left: 0,
-                    height: "100vh", // Full height of the viewport
-                    width: "100vw", // Full width of the viewport
-                    zIndex: -1, // Behind other content
-                }}
-                ref={canvasRef}
-            /> */}
-            {loading && <Load/>}
-            {loading===false && <div className="main" style={{ position: "relative", minHeight: "100vh" }}>
+            {loading && <Load />}
+            {loading === false && <div className="main" style={{ position: "relative", minHeight: "100vh" }}>
                 <Navbar />
-                <Home />       
+                <Home />
                 <Diplomacy />
                 <About />
                 <PastEvents />
                 <Past_Sponsors />
-                <FAQs />
+                <FAQs data={data.faqs} />
                 <ContactUs />
             </div>}
         </div>

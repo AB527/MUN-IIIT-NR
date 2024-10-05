@@ -8,26 +8,26 @@
     src: url('../../../../Assets/Fonts/Montserrat-VariableFont_wght.ttf');
 }
 
-.team-home{
+.team-home {
     background-image: url('../../../../Assets/Images/Background/MUN Background Image.png');
     background-size: cover;
     height: 100svh;
 }
 
-.team-building{
+.team-building {
     position: absolute;
     bottom: 0;
     background-image: url('../../../../Assets/Parallax/Building_final.png');
     background-size: cover;
-    height:70%;
-    width:100%;
+    height: 70%;
+    width: 100%;
     z-index: 1;
 }
 
-.team-head{
+.team-head {
     position: relative;
-    width:75%;
-    height:100%;
+    width: 75%;
+    height: 100%;
     text-align: center;
     color: white;
     margin: auto;
@@ -41,62 +41,66 @@
     flex-direction: column;
 }
 
-.year{
+.year {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap:6vh;
+    gap: 6vh;
 }
 
-.year svg{
+.year svg {
     cursor: pointer;
 }
 
-.year svg:hover{
+.year svg:hover {
     transform: scale(1.1);
 }
 
 @media (max-width:630px) {
-    .team-head{
+    .team-head {
         font-size: 50px;
     }
-    .year{
+
+    .year {
         display: flex;
         align-items: center;
         justify-content: center;
-        gap:3vh;
+        gap: 3vh;
     }
 }
 
 @media (max-width:560px) {
-    .team-head{
+    .team-head {
         font-size: 30px;
     }
-    .year{
+
+    .year {
         display: flex;
         align-items: center;
         justify-content: center;
-        gap:0;
+        gap: 0;
     }
-    .year svg{
+
+    .year svg {
         height: 60px;
     }
 }
 
 
 @media (max-width:560px) {
-    .team-head{
+    .team-head {
         font-size: 30px;
     }
-    .year{
+
+    .year {
         display: flex;
         align-items: center;
         justify-content: center;
-        gap:0;
+        gap: 0;
     }
-    .year svg{
+
+    .year svg {
         height: 60px;
         width: 60px;
     }
 }
-

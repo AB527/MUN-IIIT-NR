@@ -4,32 +4,43 @@ import TeamMember from "../TeamMemberCard/TeamMember";
 import TeamData from '../../../../data/TeamData';
 import TeamHome from "../TeamHome/TeamHome";
 import Team_MUN_2023 from "../../../../Assets/Team/Team_Mun_2023.png"
+import LoadingDots from "../../../Load_Page/LoadingDots";
 
-export default function TeamMain() {
+export default function TeamMain({data}) {
     const [selectedYear, setSelectedYear] = React.useState(2024);
     const currentYear = new Date().getFullYear();
-    
-    // Get data for the selected year
-    const yearData = TeamData[selectedYear];
+    const [yearData, setYearData] = React.useState(null);
+    const getYearData = year => data.length>0?data.filter(x=>x.year==year.toString())[0].data:null;
+
+    React.useEffect(()=>{
+        console.log(data)
+        setYearData(getYearData(selectedYear))
+    },[data])
     
     function nextYear() {
         if (selectedYear < currentYear) {
             setSelectedYear(selectedYear + 1);
+            setYearData(getYearData(selectedYear+1))
         }
     }
 
     function previousYear() {
         if (selectedYear > 2023) {
             setSelectedYear(selectedYear - 1);
+            setYearData(getYearData(selectedYear-1))
         }
     }
 
     return (
         <div>
             <TeamHome year={selectedYear} previousYear={previousYear} nextYear={nextYear} />
+            {
+                yearData==null && <LoadingDots />
+            }
             <div className="team-main">
                 {/* LEADS Section */}
-                {yearData && yearData.Generals && yearData.Generals.length > 0 && (
+                {/* <p>{yearData.length.toString()}</p> */}
+                {yearData && yearData.Generals && (
                     <div className="category">
                         <div className="team-heading">LEADS</div>
                         <div className="team" style={{ flexDirection: "column" }}>
@@ -38,7 +49,7 @@ export default function TeamMain() {
                                     key={index}
                                     name={member.name}
                                     post={member.post}
-                                    image={member.img}
+                                    image={`${selectedYear}/${member.img}`}
                                     linkedin={member.linkedin}
                                     insta={member.insta}
                                 />
@@ -57,7 +68,7 @@ export default function TeamMain() {
                                     key={index}
                                     name={member.name}
                                     post={member.post}
-                                    image={member.img}
+                                    image={`${selectedYear}/${member.img}`}
                                     linkedin={member.linkedin}
                                 />
                             ))}
@@ -75,7 +86,7 @@ export default function TeamMain() {
                                     key={index}
                                     name={member.name}
                                     post={member.post}
-                                    image={member.img}
+                                    image={`${selectedYear}/${member.img}`}
                                     linkedin={member.linkedin}
                                 />
                             ))}
@@ -93,7 +104,7 @@ export default function TeamMain() {
                                     key={index}
                                     name={member.name}
                                     post={member.post}
-                                    image={member.img}
+                                    image={`${selectedYear}/${member.img}`}
                                     linkedin={member.linkedin}
                                 />
                             ))}

@@ -5,12 +5,21 @@ import ContactUs from "../../ContactUs/ContactUs"
 import Navbar2 from "../../../Components/Navbar2/Navbar2"
 import './TeamPage.css'
 
-export default function TeamPage(){
-    return(
+import { useEffect, useState } from "react"
+import fetchAPI from "../../../Utilities/NetworkUtility"
+
+export default function TeamPage() {
+    const [data, setData] = useState([]);
+    useEffect(() => {
+        fetchAPI("get-team", data => {
+            setData(data)
+        })
+    }, []);
+    return (
         <div className="team-page">
-              <Navbar2/>
-            <TeamMain/>
-            <ContactUs/>
+            <Navbar2 />
+            <TeamMain data={data} />
+            <ContactUs />
         </div>
     )
 }

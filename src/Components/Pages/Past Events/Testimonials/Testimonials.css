@@ -1,9 +1,10 @@
 
 .test-head {
     color: white;
-    padding-left: 11%;
-    font-weight:600;
+    font-weight: 600;
     font-family: Anton;
+    text-align: center;
+    margin-top: 5vh;
 }
 
 .testimonials {
