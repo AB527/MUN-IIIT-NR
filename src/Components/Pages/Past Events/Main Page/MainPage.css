@@ -11,7 +11,7 @@
     height: 60svh;
     background-image: url('../../../../Assets/Images/Background/MUN Background Image.png');
     background-size: cover;
-    z-index: 1;
+    /* z-index: 1; */
     /* margin-bottom: 5rem; */
 }
 
@@ -22,13 +22,13 @@
     background-size: cover;
     height:70%;
     width:100%;
-    z-index: 1;
+    /* z-index: 1; */
 }
 
 .past-main .main-content{
     height:100%;
     width:75%;
-    z-index: 2;
+    /* z-index: 2; */
     margin: auto;
 }
 

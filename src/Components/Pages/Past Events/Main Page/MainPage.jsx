@@ -1,6 +1,7 @@
 import React from 'react'
 import "./MainPage.css"
 import { left } from '@popperjs/core'
+import LoadingDots from '../../../Load_Page/LoadingDots'
 
 const MainPage = () => {
   return (

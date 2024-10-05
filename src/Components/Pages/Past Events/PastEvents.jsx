@@ -27,8 +27,8 @@ const PastEvents = () => {
         !data.past_events && <LoadingDots />
       }
       {
-        data.past_events && data.past_events.map((eve, key) => (<>
-          <div key={key}>
+        data.past_events && data.past_events.map((eve, index) => (
+          <div key={index}>
             <AboutGallery
               head1={eve.title}
               text={eve.desc} />
@@ -36,7 +36,6 @@ const PastEvents = () => {
             {eve.event_grid && <Events_Grid />}
             <Gallery Gallery={eve.gallery} />
           </div>
-          </>
         ))
       }
       <Testimonials data={data.testimonials} />

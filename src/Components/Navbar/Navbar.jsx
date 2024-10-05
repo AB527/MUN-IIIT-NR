@@ -15,7 +15,7 @@ import Hamburger from 'hamburger-react';
 import PropTypes from 'prop-types';
 import * as React from 'react';
 import "./navbar.css";
-import {NavLink} from "react-router-dom"
+import { NavLink } from "react-router-dom"
 
 const navItems = ['About Us', 'Past Event', 'Team', 'FAQ', 'Contact Us'];
 
@@ -67,11 +67,11 @@ function DrawerAppBar(props) {
             </ListItemButton>
           </ListItem>
         ))} */}
-         <ListItem><ListItemButton href="#About Us" onClick={()=>setOpen(false)}>About Us</ListItemButton></ListItem>
-         <NavLink to="/past-events"><ListItem><ListItemButton onClick={()=>setOpen(false)}>Past Events</ListItemButton></ListItem></NavLink>
-        <NavLink to="/team"><ListItem><ListItemButton onClick={()=>setOpen(false)}>Team</ListItemButton></ListItem></NavLink>
-        <ListItem><ListItemButton href="#FAQ" onClick={()=>setOpen(false)}>FAQ</ListItemButton></ListItem>
-        <ListItem><ListItemButton href="#Contact Us" onClick={()=>setOpen(false)}>Contact Us</ListItemButton></ListItem>
+        <ListItem><ListItemButton href="#About Us" onClick={() => setOpen(false)}>About Us</ListItemButton></ListItem>
+        <NavLink to="/past-events"><ListItem><ListItemButton onClick={() => setOpen(false)}>Past Events</ListItemButton></ListItem></NavLink>
+        <NavLink to="/team"><ListItem><ListItemButton onClick={() => setOpen(false)}>Team</ListItemButton></ListItem></NavLink>
+        <ListItem><ListItemButton href="#FAQ" onClick={() => setOpen(false)}>FAQ</ListItemButton></ListItem>
+        <ListItem><ListItemButton href="#Contact Us" onClick={() => setOpen(false)}>Contact Us</ListItemButton></ListItem>
       </List>
     </Box>
   );
@@ -111,12 +111,16 @@ function DrawerAppBar(props) {
             {/* <div className="nav-logo">
               <img src={Logo} alt="Logo" />
             </div> */}
-            <Box sx={{ display: { xs: 'none', sm: 'flex', background: "transparent",
-                    borderRadius: "20px",
-                    boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
-                    backdropFilter: "blur(5.4px)",
-                    webkitBackdropFilter: "blur(5.4px)",
-                     marginRight:"auto", gap:"2vh",padding:"0.5vh",border: "3px solid #006765",margin:"auto"} }}>
+            <Box sx={{
+              display: {
+                xs: 'none', sm: 'flex', background: "transparent",
+                borderRadius: "20px",
+                boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
+                backdropFilter: "blur(5.4px)",
+                webkitBackdropFilter: "blur(5.4px)",
+                marginRight: "auto", gap: "2vh", padding: "0.5vh", border: "3px solid #006765", margin: "auto"
+              }
+            }}>
               {/* {navItems.map((item) => (
                 <Button 
                   key={item} 
@@ -126,13 +130,13 @@ function DrawerAppBar(props) {
                   {item}
                 </Button>
               ))} */}
-                 <ul style={{display:'flex', justifyContent:"space-between", listStyle:"none", gap:"2.5vh", margin:"1vh", paddingLeft:"0"}} className='nav-list'>
-              <a href="#About Us"><li>About Us</li></a>
-              <NavLink to="/past-events"><li>Past Events</li></NavLink>
-             <NavLink to="/team"><li>Team</li></NavLink>
-              <a href="#FAQ"><li>FAQ</li></a>
-              <a href="#Contact Us"><li>Contact Us</li></a>
-            </ul>
+              <ul style={{ display: 'flex', justifyContent: "space-between", listStyle: "none", gap: "2.5vh", margin: "1vh", paddingLeft: "0" }} className='nav-list'>
+                <a href="#About Us"><li>About Us</li></a>
+                <NavLink to="/past-events"><li>Past Events</li></NavLink>
+                <NavLink to="/team"><li>Team</li></NavLink>
+                <a href="#FAQ"><li>FAQ</li></a>
+                <a href="#Contact Us"><li>Contact Us</li></a>
+              </ul>
             </Box>
             {/* <button className='nav-button'>Contact Us</button> */}
           </Toolbar>
