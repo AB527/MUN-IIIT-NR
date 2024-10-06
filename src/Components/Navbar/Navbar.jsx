@@ -31,18 +31,32 @@ function DrawerAppBar(props) {
 
   const [isOpen, setOpen] = React.useState(false);
 
+  const [currentSelected, setCurrentSelected] = React.useState("home");
+
+  const updateScrollStatus = id => {
+    const e = window.document.getElementById(id)
+    if(e) {
+      console.log(e.id, e.scrollHeight, window.scrollY)
+      const bottom = e.scrollHeight - window.scrollY === e.clientHeight;
+      if (bottom) setCurrentSelected(id) 
+    }
+  }
+
   const handleScroll = () => {
     const scrollTop = window.scrollY;
-    if (scrollTop > 100) {
-      setBackgroundColor("rgba(0, 0, 0, 0.7)");
-      setNavlistColor("white");
-    } else {
-      setBackgroundColor("transparent");
-      setNavlistColor("black");
-    }
+    // console.log(scrollTop)
+    // navItems.forEach(item=>updateScrollStatus(item))
+    // if (scrollTop > 100) {
+    //   setBackgroundColor("rgba(0, 0, 0, 0.7)");
+    //   setNavlistColor("white");
+    // } else {
+    //   setBackgroundColor("transparent");
+    //   setNavlistColor("black");
+    // }
   };
 
   React.useEffect(() => {
+    console.log("hello", window)
     if (typeof window !== 'undefined') {
       window.addEventListener('scroll', handleScroll);
       return () => {
@@ -60,18 +74,11 @@ function DrawerAppBar(props) {
       </div>
       <Divider />
       <List>
-        {/* {navItems.map((item) => (
-          <ListItem key={item} disablePadding>
-            <ListItemButton sx={{ textAlign: 'center' }} href={`#${item}`} onClick={() => setOpen(prev => !prev)}>
-              <ListItemText primary={item} disableTypography={true} sx={{ fontFamily: "Montserrat" }} />
-            </ListItemButton>
-          </ListItem>
-        ))} */}
-        <ListItem><ListItemButton href="#About Us" onClick={() => setOpen(false)}>About Us</ListItemButton></ListItem>
+        <ListItem><ListItemButton href="#About Us" onClick={() => {setOpen(false);setCurrentSelected("About Us")}}>About Us</ListItemButton></ListItem>
         <NavLink to="/past-events"><ListItem><ListItemButton onClick={() => setOpen(false)}>Past Events</ListItemButton></ListItem></NavLink>
         <NavLink to="/team"><ListItem><ListItemButton onClick={() => setOpen(false)}>Team</ListItemButton></ListItem></NavLink>
-        <ListItem><ListItemButton href="#FAQ" onClick={() => setOpen(false)}>FAQ</ListItemButton></ListItem>
-        <ListItem><ListItemButton href="#Contact Us" onClick={() => setOpen(false)}>Contact Us</ListItemButton></ListItem>
+        <ListItem><ListItemButton href="#FAQ" onClick={() => {setOpen(false);setCurrentSelected("FAQ")}}>FAQ</ListItemButton></ListItem>
+        <ListItem><ListItemButton href="#Contact Us" onClick={() => {setOpen(false);setCurrentSelected("Contact Us")}}>Contact Us</ListItemButton></ListItem>
       </List>
     </Box>
   );
@@ -108,9 +115,7 @@ function DrawerAppBar(props) {
                 />
               </IconButton>
             </div>
-            {/* <div className="nav-logo">
-              <img src={Logo} alt="Logo" />
-            </div> */}
+        
             <Box sx={{
               display: {
                 xs: 'none', sm: 'flex', background: "transparent",
@@ -121,21 +126,12 @@ function DrawerAppBar(props) {
                 marginRight: "auto", gap: "2vh", padding: "0.5vh", border: "3px solid #006765", margin: "auto"
               }
             }}>
-              {/* {navItems.map((item) => (
-                <Button 
-                  key={item} 
-                  sx={{ color: navlistColor, fontFamily: "Montserrat"}}
-                  href={`#${item}`}
-                >
-                  {item}
-                </Button>
-              ))} */}
               <ul style={{ display: 'flex', justifyContent: "space-between", listStyle: "none", gap: "2.5vh", margin: "1vh", paddingLeft: "0" }} className='nav-list'>
-                <a href="#About Us"><li>About Us</li></a>
-                <NavLink to="/past-events"><li>Past Events</li></NavLink>
-                <NavLink to="/team"><li>Team</li></NavLink>
-                <a href="#FAQ"><li>FAQ</li></a>
-                <a href="#Contact Us"><li>Contact Us</li></a>
+                <a href="#About Us" className={`nav-item-special ${currentSelected=="About Us"?"nav-item-selected":""}`} onClick={()=>setCurrentSelected("About Us")}><li>About Us</li></a>
+                <NavLink to="/past-events" className={`nav-item-special`}><li>Past Events</li></NavLink>
+                <NavLink to="/team" className={`nav-item-special`}><li>Team</li></NavLink>
+                <a href="#FAQ" className={`nav-item-special ${currentSelected=="FAQ"?"nav-item-selected":""}`} onClick={()=>setCurrentSelected("FAQ")}><li>FAQ</li></a>
+                <a href="#Contact Us" className={`nav-item-special ${currentSelected=="Contact Us"?"nav-item-selected":""}`} onClick={()=>setCurrentSelected("Contact Us")}><li>Contact Us</li></a>
               </ul>
             </Box>
             {/* <button className='nav-button'>Contact Us</button> */}
@@ -174,8 +170,8 @@ function DrawerAppBar(props) {
   );
 }
 
-DrawerAppBar.propTypes = {
-  window: PropTypes.func,
-};
+// DrawerAppBar.propTypes = {
+//   window: PropTypes.func,
+// };
 
 export default DrawerAppBar;

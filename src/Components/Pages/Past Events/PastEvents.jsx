@@ -21,7 +21,7 @@ const PastEvents = () => {
   }, []);
   return (
     <div className='past-events-main'>
-      <Navbar2 /> 
+      <Navbar2 currentSelected="past-events" /> 
       <MainPage />
       {
         !data.past_events && <LoadingDots />

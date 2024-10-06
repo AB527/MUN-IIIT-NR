@@ -25,15 +25,24 @@
 
 .navlist {
     display: flex;
-    gap: 1rem; 
     transition: background-color 0.3s ease;
     background-color: transparent; 
-    padding: 0.5rem 1rem; 
+    padding: 0.1rem 1rem; 
 }
 
 .navlist.black-background {
     background-color: black;
     color: white; 
+}
+
+.nav-item-special {
+    padding: 5px 10px;
+    border-radius: 10px;
+    transition: background-color 0.3s linear, color 0.3s ease;
+}
+
+.nav-item-special:hover, .nav-item-selected {
+    background-color: #500691;
 }
 
 @media (max-width: 600px) {

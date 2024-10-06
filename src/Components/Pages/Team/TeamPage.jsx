@@ -17,7 +17,7 @@ export default function TeamPage() {
     }, []);
     return (
         <div className="team-page">
-            <Navbar2 />
+            <Navbar2 currentSelected="team" />
             <TeamMain data={data} />
             <ContactUs />
         </div>

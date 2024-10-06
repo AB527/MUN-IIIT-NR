@@ -94,7 +94,7 @@ export default function App() {
         <div style={{ position: "relative", height: "100vh" }}>
             {loading && <Load />}
             {loading === false && <div className="main" style={{ position: "relative", minHeight: "100vh" }}>
-                <Navbar />
+                <Navbar window={window}/>
                 <Home />
                 <Diplomacy />
                 <About />
