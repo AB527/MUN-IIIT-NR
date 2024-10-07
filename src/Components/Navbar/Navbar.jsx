@@ -33,30 +33,28 @@ function DrawerAppBar(props) {
 
   const [currentSelected, setCurrentSelected] = React.useState("home");
 
-  const updateScrollStatus = id => {
-    const e = window.document.getElementById(id)
-    if(e) {
-      console.log(e.id, e.scrollHeight, window.scrollY)
-      const bottom = e.scrollHeight - window.scrollY === e.clientHeight;
-      if (bottom) setCurrentSelected(id) 
-    }
-  }
+  // const updateScrollStatus = id => {
+  //   const e = window.document.getElementById(id)
+  //   if(e) {
+  //     console.log(e.id, e.scrollHeight, window.scrollY)
+  //     const bottom = e.scrollHeight - window.scrollY === e.clientHeight;
+  //     if (bottom) setCurrentSelected(id) 
+  //   }
+  // }
 
   const handleScroll = () => {
     const scrollTop = window.scrollY;
-    // console.log(scrollTop)
     // navItems.forEach(item=>updateScrollStatus(item))
-    // if (scrollTop > 100) {
-    //   setBackgroundColor("rgba(0, 0, 0, 0.7)");
-    //   setNavlistColor("white");
-    // } else {
-    //   setBackgroundColor("transparent");
-    //   setNavlistColor("black");
-    // }
+    if (scrollTop > 100) {
+      setBackgroundColor("rgba(0, 0, 0, 0.7)");
+      setNavlistColor("white");
+    } else {
+      setBackgroundColor("transparent");
+      setNavlistColor("black");
+    }
   };
 
   React.useEffect(() => {
-    console.log("hello", window)
     if (typeof window !== 'undefined') {
       window.addEventListener('scroll', handleScroll);
       return () => {
@@ -170,8 +168,8 @@ function DrawerAppBar(props) {
   );
 }
 
-// DrawerAppBar.propTypes = {
-//   window: PropTypes.func,
-// };
+DrawerAppBar.propTypes = {
+  window: PropTypes.func,
+};
 
 export default DrawerAppBar;

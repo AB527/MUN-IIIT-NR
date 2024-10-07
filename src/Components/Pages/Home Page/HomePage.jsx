@@ -13,6 +13,7 @@ import { NeatGradient } from "@firecms/neat";
 import './HomePage.css'
 import Load from "../../Load_Page/Load.jsx";
 import fetchAPI from '../../../Utilities/NetworkUtility'
+import IOTW from "./IOTW/IOTW.jsx";
 
 AOS.init({ once: true }); // Initialize AOS
 
@@ -94,12 +95,13 @@ export default function App() {
         <div style={{ position: "relative", height: "100vh" }}>
             {loading && <Load />}
             {loading === false && <div className="main" style={{ position: "relative", minHeight: "100vh" }}>
-                <Navbar window={window}/>
+                <Navbar/>
                 <Home />
                 <Diplomacy />
                 <About />
                 <PastEvents />
                 <Past_Sponsors />
+                <IOTW data={data.iotw} />
                 <FAQs data={data.faqs} />
                 <ContactUs />
             </div>}

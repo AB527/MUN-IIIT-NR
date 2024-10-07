@@ -13,7 +13,6 @@ export default function TeamMain({data}) {
     const getYearData = year => data.length>0?data.filter(x=>x.year==year.toString())[0].data:null;
 
     React.useEffect(()=>{
-        console.log(data)
         setYearData(getYearData(selectedYear))
     },[data])
     
